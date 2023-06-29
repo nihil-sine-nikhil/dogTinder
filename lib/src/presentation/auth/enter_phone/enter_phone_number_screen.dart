@@ -28,7 +28,7 @@ class _EnterPhoneNumberScreenState extends State<EnterPhoneNumberScreen> {
     return BlocConsumer<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) {
         if (state is AuthenticationOTPSentFailedState) {
-          CustomErrorSnackBarMsg(time: 3, text: state.msg, context: context);
+          customErrorSnackBarMsg(time: 3, text: state.msg, context: context);
         }
       },
       builder: (context, state) {
@@ -116,7 +116,7 @@ class _EnterPhoneNumberScreenState extends State<EnterPhoneNumberScreen> {
                           if (state is AuthenticationPhoneNumberValidState) {
                             _bloc.add(AuthenticationLoginSubmittedEvent(value));
                           } else {
-                            CustomErrorSnackBarMsg(
+                            customErrorSnackBarMsg(
                                 time: 3,
                                 text: "Please, enter a valid number.",
                                 context: context);
@@ -148,42 +148,6 @@ class _EnterPhoneNumberScreenState extends State<EnterPhoneNumberScreen> {
                       )),
                     ]),
                     const Spacer(),
-                    RichText(
-                      textAlign: TextAlign.center,
-                      text: const TextSpan(
-                        text: 'By signing up, you agree to the ',
-                        style: TextStyle(fontSize: 14, color: kTextSecondary),
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: 'Privacy Policy',
-                            style: TextStyle(
-                              fontSize: 14,
-                              // fontWeight: FontWeight.bold,
-                              // fontStyle: FontStyle.italic,
-                              color: kTextPrimary,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                          TextSpan(
-                            text: '  and  ',
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontStyle: FontStyle.italic,
-                                color: kTextSecondary),
-                          ),
-                          TextSpan(
-                            text: 'Terms and Conditions',
-                            style: TextStyle(
-                              fontSize: 14,
-                              // fontStyle: FontStyle.italic,
-                              // fontWeight: FontWeight.bold,
-                              color: kTextPrimary,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                     const SizedBox(
                       height: 20,
                     ),
@@ -207,7 +171,7 @@ class _EnterPhoneNumberScreenState extends State<EnterPhoneNumberScreen> {
                           _bloc.add(AuthenticationLoginSubmittedEvent(
                               _mobileNumberTC.text));
                         } else {
-                          CustomErrorSnackBarMsg(
+                          customErrorSnackBarMsg(
                               time: 3,
                               text: "Please, enter a valid number.",
                               context: context);

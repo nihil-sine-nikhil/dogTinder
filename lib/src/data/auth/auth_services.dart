@@ -188,6 +188,9 @@ class AuthenticationServices {
     CustomResponse _response = CustomResponse(status: true, msg: "");
     try {
       SharedPreferences _prefs = await SharedPreferences.getInstance();
+      _prefs.setInt(AppConstant.spTotalLikes, 0);
+      _prefs.setInt(AppConstant.spTotalDislikes, 0);
+      _prefs.setInt(AppConstant.spTotalSuperLikes, 0);
       String? _uid = _prefs.getString(AppConstant.spUserID);
 
       await _fbFireStore

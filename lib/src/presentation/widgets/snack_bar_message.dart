@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../app/constants/ui_constants.dart';
 
-ScaffoldFeatureController CustomSnackBarMsg({
+ScaffoldFeatureController customSnackBarMsg({
   required BuildContext context,
   required String text,
   required int time,
+  Color? color,
 }) {
   return ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
@@ -18,7 +19,7 @@ ScaffoldFeatureController CustomSnackBarMsg({
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 28),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: kDark,
+          color: color ?? kDark,
         ),
         child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const Icon(Icons.info, color: kWhite),
@@ -41,7 +42,7 @@ ScaffoldFeatureController CustomSnackBarMsg({
   );
 }
 
-ScaffoldFeatureController CustomErrorSnackBarMsg({
+ScaffoldFeatureController customErrorSnackBarMsg({
   required BuildContext context,
   required String text,
   required int time,
@@ -65,7 +66,7 @@ ScaffoldFeatureController CustomErrorSnackBarMsg({
             color: kWhite,
             size: 30,
           ),
-          SizedBox(
+          const SizedBox(
             width: 15,
           ),
           Expanded(

@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+import 'package:task/src/presentation/home/pages/home_screen.dart';
 
 import 'app/navigation/router.dart';
 import 'app/navigation/routes.dart';
@@ -45,30 +47,34 @@ class _MyAppState extends State<MyApp> {
               onTap: () {
                 FocusManager.instance.primaryFocus?.unfocus();
               },
-              child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                title: 'Task',
-                navigatorKey: navigatorKey,
-                onGenerateRoute: AppRouter.router.generator,
-                // home: const LandingScreen(),
-                builder: (context, widget) {
-                  return BlocConsumer<AuthenticationBloc, AuthenticationState>(
-                    listener: (context, state) {
-                      if (state is AuthenticationLoggedInState) {
-                        AppRouter.navigateTo(AppRoutes.homeRoute.route,
-                            clearStack: true);
-                      }
-                      if (state is AuthenticationUnknownState) {
-                        AppRouter.navigateTo(
-                            AppRoutes.enterPhoneNumberScreenRoute.route,
-                            clearStack: true);
-                      }
-                    },
-                    builder: (context, state) {
-                      return widget!;
-                    },
-                  );
-                },
+              child: ChangeNotifierProvider(
+                create: (context) => CardProvider(),
+                child: MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  title: 'Task',
+                  navigatorKey: navigatorKey,
+                  onGenerateRoute: AppRouter.router.generator,
+                  // home: const LandingScreen(),
+                  builder: (context, widget) {
+                    return BlocConsumer<AuthenticationBloc,
+                        AuthenticationState>(
+                      listener: (context, state) {
+                        if (state is AuthenticationLoggedInState) {
+                          AppRouter.navigateTo(AppRoutes.homeRoute.route,
+                              clearStack: true);
+                        }
+                        if (state is AuthenticationUnknownState) {
+                          AppRouter.navigateTo(
+                              AppRoutes.enterPhoneNumberScreenRoute.route,
+                              clearStack: true);
+                        }
+                      },
+                      builder: (context, state) {
+                        return widget!;
+                      },
+                    );
+                  },
+                ),
               ),
             );
           }

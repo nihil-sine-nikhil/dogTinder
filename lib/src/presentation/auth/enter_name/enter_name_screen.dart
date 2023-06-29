@@ -39,7 +39,7 @@ class _EnterNameScreenState extends State<EnterNameScreen> {
           AppRouter.navigateTo(AppRoutes.homeRoute.route, clearStack: true);
         }
         if (state is UserCreateUserFailedState) {
-          CustomErrorSnackBarMsg(time: 3, text: state.msg, context: context);
+          customErrorSnackBarMsg(time: 3, text: state.msg, context: context);
         }
       },
       builder: (context, state) {
@@ -132,7 +132,7 @@ class _EnterNameScreenState extends State<EnterNameScreen> {
                             await SharedPreferences.getInstance();
 
                         if (_nameTC.text.isEmpty) {
-                          CustomErrorSnackBarMsg(
+                          customErrorSnackBarMsg(
                               time: 3,
                               text: "Oops! Can't have an empty name.",
                               context: context);

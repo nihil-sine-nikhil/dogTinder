@@ -12,7 +12,7 @@ import '../../widgets/snack_bar_message.dart';
 
 // ignore: must_be_immutable
 class VerifyOTPScreen extends StatefulWidget {
-  VerifyOTPScreen({Key? key, this.verificationCode, this.phone})
+  const VerifyOTPScreen({Key? key, this.verificationCode, this.phone})
       : super(key: key);
   final String? verificationCode;
   final String? phone;
@@ -33,13 +33,13 @@ class _VerifyOTPScreenState extends State<VerifyOTPScreen> {
     return BlocConsumer<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) {
         if (state is AuthenticationOTPVerifiedFailedState) {
-          CustomErrorSnackBarMsg(time: 3, text: state.msg, context: context);
+          customErrorSnackBarMsg(time: 3, text: state.msg, context: context);
         }
         if (state is AuthenticationOTPResentSuccessfulState) {
-          CustomSnackBarMsg(time: 3, text: state.msg, context: context);
+          customSnackBarMsg(time: 3, text: state.msg, context: context);
         }
         if (state is AuthenticationOTPResentFailedState) {
-          CustomErrorSnackBarMsg(time: 3, text: state.msg, context: context);
+          customErrorSnackBarMsg(time: 3, text: state.msg, context: context);
         }
       },
       builder: (context, state) {
@@ -218,7 +218,7 @@ class _VerifyOTPScreenState extends State<VerifyOTPScreen> {
                                     _otpEC.text,
                                     widget.verificationCode ?? ""));
                           } else {
-                            CustomErrorSnackBarMsg(
+                            customErrorSnackBarMsg(
                                 time: 3,
                                 text: "Enter a valid 6 digit OTP.",
                                 context: context);

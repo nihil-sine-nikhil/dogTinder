@@ -33,15 +33,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       } else {
         emit(UserCreateUserFailedState(_response.msg ?? "NA"));
       }
-
-      // final _response =
-      //     await _authServices.createUser(event.userModel, event.profilePic);
-      // if (_response.status) {
-      //   emit(AuthenticationAboutYouSuccessfulState(_response.msg ?? "NA"));
-      // } else if (!_response.status) {
-      //   emit(AuthenticationAboutYouFailedState(
-      //       _response.msg ?? "Something went wrong."));
-      // }
     });
 
     on<LoadUserProfile>((event, emit) async {

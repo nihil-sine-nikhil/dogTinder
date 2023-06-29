@@ -38,7 +38,7 @@ mixin AppRoutes {
   static final homeRoute = AppRoute(
     '/home',
     Handler(
-      handlerFunc: (context, parameters) => const HomeScreen(),
+      handlerFunc: (context, parameters) => HomeScreen(),
     ),
   );
 
