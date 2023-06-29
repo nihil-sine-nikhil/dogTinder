@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:task/src/presentation/home/pages/home_screen.dart';
 
 import 'app/navigation/router.dart';
 import 'app/navigation/routes.dart';
 import 'data/auth/bloc/auth_bloc.dart';
+import 'data/card/provider/card_provider.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
