@@ -11,7 +11,7 @@ import '../../app/constants/app_constants.dart';
 import '../../app/navigation/router.dart';
 import '../../app/navigation/routes.dart';
 import '../api/services/api_base_services.dart';
-import '../user/model/model.dart';
+import '../user/model/user_model.dart';
 
 class AuthenticationServices {
   bool _isSignedIn = false;

@@ -29,6 +29,8 @@ dependencies:
   equatable: ^2.0.5
   google_fonts: ^3.0.1
   bootstrap_icons: ^1.10.2
+  dio: ^5.1.0
+
 
 
 

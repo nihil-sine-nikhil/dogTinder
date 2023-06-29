@@ -12,7 +12,7 @@ import '../../../app/constants/ui_constants.dart';
 import '../../../app/navigation/router.dart';
 import '../../../app/navigation/routes.dart';
 import '../../../data/user/bloc/user_bloc.dart';
-import '../../../data/user/model/model.dart';
+import '../../../data/user/model/user_model.dart';
 import '../../widgets/custom_textfield.dart';
 import '../../widgets/dancing_dots.dart';
 import '../../widgets/snack_bar_message.dart';

@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../auth/services.dart';
-import '../model/model.dart';
+import '../../auth/auth_services.dart';
+import '../model/user_model.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';
