@@ -110,7 +110,6 @@ class AuthenticationServices {
   ) async {
     CustomResponse _response =
         CustomResponse(status: true, msg: "OTP is successfully verified");
-    // Completer<CustomResponse> _completer = Completer<CustomResponse>();
 
     try {
       PhoneAuthCredential cred = PhoneAuthProvider.credential(
@@ -139,9 +138,6 @@ class AuthenticationServices {
         _response.msg = e.message;
         return _response;
       }
-      // invalid-verification-id = he verification ID used to create the phone auth credential is invalid.
-      // invalid-verification-code
-      // The sms verification code used to create the phone auth credential is invalid. Please resend the verification code sms and be sure use the verification code provided by the user.
     }
     return _response;
   }
@@ -189,19 +185,10 @@ class AuthenticationServices {
 
   Future<CustomResponse> createUser(
       UserModel _userModel, File? profilePic) async {
-    // MoneyModel _moneyModel = MoneyModel(bankAccount: );
     CustomResponse _response = CustomResponse(status: true, msg: "");
     try {
       SharedPreferences _prefs = await SharedPreferences.getInstance();
       String? _uid = _prefs.getString(AppConstant.spUserID);
-      //
-      // if (profilePic != null) {
-      //   await storeProfilePic("profilePics/$_uid", profilePic).then((value) {
-      //     _userModel.profilePic = value;
-      //
-      //     _prefs.setString(AppConstant.spProfilePic, value);
-      //   });
-      // }
 
       await _fbFireStore
           .collection("users")
@@ -209,8 +196,6 @@ class AuthenticationServices {
           .set(_userModel.toMap())
           .then((value) async {
         _prefs.setString(AppConstant.spName, _userModel.name!);
-        await createCollectionWithEmptyDoc(
-            _uid!, 'moneyAcceptanceModes', 'moneyAcceptanceModes');
         setSignin();
         _response.status = true;
         _response.msg = 'User created successfully ';
@@ -251,10 +236,7 @@ class AuthenticationServices {
           .collection('users')
           .doc(_fbAuth.currentUser!.uid)
           .get();
-      // if (_response.status) {
-      //   return (_response.msg?.data['data'] as List)
-      //       .map((e) => SkuModel.fromMap(e));
-      // }
+
       var data = snapshot.data();
 
       var details = UserModel.fromMap(data!);
@@ -264,11 +246,6 @@ class AuthenticationServices {
       print('kError 346 $e');
       return UserModel();
     }
-
-    // if (_response.status) {
-    //   return (_response.msg?.data['data'] as List)
-    //       .map((e) => SkuModel.fromMap(e));
-    // }
   }
 
   Future<CustomResponse> editProfile(
@@ -278,7 +255,6 @@ class AuthenticationServices {
     try {
       SharedPreferences _prefs = await SharedPreferences.getInstance();
       String? _uid = _prefs.getString(AppConstant.spUserID);
-      print("chakka $_uid ");
       await _fbFireStore
           .collection("users")
           .doc(_uid)

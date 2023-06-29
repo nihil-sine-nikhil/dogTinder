@@ -147,32 +147,6 @@ class _EnterNameScreenState extends State<EnterNameScreen> {
                                 profilePic: image),
                           );
                         }
-                        /*          print('kk');
-                    FirebaseFirestore.instance
-                        .collection('users')
-                        .doc('r0322tk3T8c53TGzgSFfVsCNuDu2')
-                        .collection('addresses')
-                        .add({
-                      'addressLine': FieldValue.serverTimestamp(),
-                      "adduy": 34
-                    });
-
-                    if (image != null) {
-                      _authServ.storeUserDataToFB(
-                          context,
-                          UserModel(
-                              name: _nameTC.text.trim(),
-                              email: '${_nameTC.text}@gmail.com',
-                              bio: '${_nameTC.text} bhai hoon',
-                              profilePic: "",
-                              createdAt: "",
-                              phoneNumber: "",
-                              uid: ""),
-                          image!);
-                    } else {
-                      CustomSnackBarMsg(
-                          context: context, text: "no image? why?", time: 2);*/
-                        // }
                       },
                     ),
                     const SizedBox(

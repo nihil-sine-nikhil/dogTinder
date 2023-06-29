@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../app/constants/asset_constants.dart';
 import '../../../app/constants/ui_constants.dart';
 import '../../../data/auth/bloc/auth_bloc.dart';
 import '../../widgets/dancing_dots.dart';
@@ -49,7 +50,7 @@ class _EnterPhoneNumberScreenState extends State<EnterPhoneNumberScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 70.0),
                       child: Image.asset(
-                        Assets.images.kdLogoHQ,
+                        Assets.images.logo,
                         height: 40,
                       ),
                     ),
